@@ -7,7 +7,6 @@
 //
 
 #import <SDWebImage/SDWebImageDecoder.h>
-#import <SDWebImage/SDWebImageManager.h>
 #import <SDWebImage/SDWebImageOperation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MWPhoto.h"
@@ -213,7 +212,7 @@
     @try {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         _webImageOperation = [manager downloadImageWithURL:url
-                                                   options:0
+                                                   options:self.options
                                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                                       if (expectedSize > 0) {
                                                           float progress = receivedSize / (float)expectedSize;
