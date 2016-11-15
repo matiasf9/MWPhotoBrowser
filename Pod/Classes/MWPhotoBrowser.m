@@ -1614,6 +1614,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                 weakSelf.activityViewController = nil;
                 [weakSelf hideControlsAfterDelay];
                 [weakSelf hideProgressHUD:YES];
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(photoBrowser:photoSharedAtIndex:withActivityType:andCompleted:)]) {
+                    [weakSelf.delegate photoBrowser:weakSelf photoSharedAtIndex:_currentPageIndex withActivityType:activityType andCompleted:completed];
+                }
             }];
             // iOS 8 - Set the Anchor Point for the popover
             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8")) {
